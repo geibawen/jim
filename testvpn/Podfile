@@ -1,0 +1,15 @@
+#use_frameworks!
+
+target 'testvpn' do
+  pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'BlocksKit'
+  pod 'SDWebImage'
+  pod 'libPhoneNumber-iOS'
+  pod 'MJRefresh'
+  pod 'SWTableViewCell'
+  
+  pod 'AFNetworking'
+  pod 'SSZipArchive'
+  
+  pod 'SAMKeychain'
+end

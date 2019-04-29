@@ -1,0 +1,4 @@
+/* 通用 */
+"rr_confirm" = "OK";
+"rr_cancel" = "Cancel";
+"rr_unknown_error" = "Unknown error";
