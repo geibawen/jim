@@ -19,11 +19,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    TPNavigationController *navigationController = [[TPNavigationController alloc] initWithRootViewController:[MainViewController new]];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    MainViewController *mainViewController = [MainViewController new];
+    TPNavigationController *navigationController = [[TPNavigationController alloc] initWithRootViewController:mainViewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     navigationController.navigationBarHidden = YES;
+    NSLog(@"****** recieved launched");
 
     return YES;
 }
@@ -61,9 +63,11 @@ self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    NSLog(@"url2:%@", url);
+    NSLog(@"****** recieved rrmap url2:%@", url);
     
-    NSNotification *notification =[NSNotification notificationWithName:@"GOT_MAP" object:nil userInfo:@{}];
+    self.url = url;
+    
+    NSNotification *notification =[NSNotification notificationWithName:@"GOT_MAP" object:nil userInfo:@{@"url": url}];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
     return YES;
 }

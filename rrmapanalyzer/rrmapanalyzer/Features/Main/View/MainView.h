@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainView : UIView
 
+@property (nonatomic, weak) id<MainViewDelegate> delegate;
+
+@property (nonatomic, strong) UILabel                 *usageInfoLabel;
 
 @end
 

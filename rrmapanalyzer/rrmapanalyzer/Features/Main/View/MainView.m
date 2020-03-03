@@ -12,7 +12,7 @@
 
 @interface MainView()
 
-@property (nonatomic, strong) UILabel                 *usageInfoLabel;
+
 
 @end
 
@@ -22,6 +22,7 @@
     self = [super initWithFrame:frame];
     
     _usageInfoLabel = [TPViewUtil labelWithFrame:CGRectMake(0, 0, 0, 25) fontSize:26 color:LIST_MAIN_TEXT_COLOR];
+    _usageInfoLabel.textAlignment = NSTextAlignmentCenter;
     _usageInfoLabel.font = [UIFont systemFontOfSize:18];
     _usageInfoLabel.text = @"请从其他App发送文件到此App";
     [self addSubview:_usageInfoLabel];

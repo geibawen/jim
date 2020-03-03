@@ -25,7 +25,7 @@
 		CD95294123D6AA2F00B32153 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD95287F23D6AA2F00B32153 /* SimplePing.m */; };
 		CD95294223D6AA2F00B32153 /* YFGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD95288223D6AA2F00B32153 /* YFGIFImageView.m */; };
 		CD95294323D6AA2F00B32153 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = CD95288323D6AA2F00B32153 /* UIImageView+PlayGIF.m */; };
-		CD95294423D6AA2F00B32153 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = CD95288623D6AA2F00B32153 /* OpenUDID.m */; };
+		CD95294423D6AA2F00B32153 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = CD95288623D6AA2F00B32153 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CD95294523D6AA2F00B32153 /* XDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD95288A23D6AA2F00B32153 /* XDProgressView.m */; };
 		CD95294623D6AA2F00B32153 /* NSObject+TPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CD95288D23D6AA2F00B32153 /* NSObject+TPCategory.m */; };
 		CD95294723D6AA2F00B32153 /* NSMutableArray+TPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CD95288E23D6AA2F00B32153 /* NSMutableArray+TPCategory.m */; };

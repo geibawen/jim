@@ -48,46 +48,46 @@
 }
 
 - (void)initContentViewsWithDict:(NSDictionary *)dict {
-    UIStackView *wrapperStackView = [[UIStackView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    wrapperStackView.axis = UILayoutConstraintAxisVertical;
-    wrapperStackView.alignment = UIStackViewAlignmentCenter;
-    wrapperStackView.distribution = UIStackViewDistributionFill;
-    wrapperStackView.spacing = DEVICE_ITEM_MARGIN;
-    [self.scrollView addSubview:wrapperStackView];
-    [wrapperStackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_topAnimationView.mas_bottom).offset(DEVICE_ITEM_MARGIN);
-        make.left.mas_equalTo(self.scrollView);
-        make.width.mas_equalTo(self.scrollView);
-        make.bottom.mas_equalTo(self.scrollView).offset(-DEVICE_ITEM_MARGIN);
-    }];
-    
-    UIStackView *stackView = [[UIStackView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    stackView.axis = UILayoutConstraintAxisHorizontal;
-    stackView.alignment = UIStackViewAlignmentCenter;
-    stackView.distribution = UIStackViewDistributionFill;
-    [wrapperView addArrangedSubview:stackView];
-    [stackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(DEVICE_ITEM_HEIGHT);
-        make.width.mas_equalTo(self);
-    }];
-    //左边间隔view
-    UIView *startPaddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_ITEM_MARGIN, 10)];
-    startPaddingView.backgroundColor = [UIColor clearColor];
-    [stackView addArrangedSubview:startPaddingView];
-    [startPaddingView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(10);
-        make.width.mas_equalTo(DEVICE_ITEM_MARGIN);
-    }];
-    
-    RRDeviceListEmptyView *addDeviceView = [[RRDeviceListEmptyView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    addDeviceView.delegate = self;
-    [stackView addArrangedSubview:addDeviceView];
-    [addDeviceView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(DEVICE_ITEM_HEIGHT);
-        make.width.mas_equalTo(DEVICE_ITEM_WIDTH);
-    }];
-    UIView *deviceView2 = [UIView new];
-    [stackView addArrangedSubview:deviceView2];
+//    UIStackView *wrapperStackView = [[UIStackView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+//    wrapperStackView.axis = UILayoutConstraintAxisVertical;
+//    wrapperStackView.alignment = UIStackViewAlignmentCenter;
+//    wrapperStackView.distribution = UIStackViewDistributionFill;
+//    wrapperStackView.spacing = DEVICE_ITEM_MARGIN;
+//    [self.scrollView addSubview:wrapperStackView];
+//    [wrapperStackView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(_topAnimationView.mas_bottom).offset(DEVICE_ITEM_MARGIN);
+//        make.left.mas_equalTo(self.scrollView);
+//        make.width.mas_equalTo(self.scrollView);
+//        make.bottom.mas_equalTo(self.scrollView).offset(-DEVICE_ITEM_MARGIN);
+//    }];
+//    
+//    UIStackView *stackView = [[UIStackView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    stackView.axis = UILayoutConstraintAxisHorizontal;
+//    stackView.alignment = UIStackViewAlignmentCenter;
+//    stackView.distribution = UIStackViewDistributionFill;
+//    [wrapperView addArrangedSubview:stackView];
+//    [stackView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(DEVICE_ITEM_HEIGHT);
+//        make.width.mas_equalTo(self);
+//    }];
+//    //左边间隔view
+//    UIView *startPaddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_ITEM_MARGIN, 10)];
+//    startPaddingView.backgroundColor = [UIColor clearColor];
+//    [stackView addArrangedSubview:startPaddingView];
+//    [startPaddingView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(10);
+//        make.width.mas_equalTo(DEVICE_ITEM_MARGIN);
+//    }];
+//    
+//    RRDeviceListEmptyView *addDeviceView = [[RRDeviceListEmptyView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+//    addDeviceView.delegate = self;
+//    [stackView addArrangedSubview:addDeviceView];
+//    [addDeviceView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(DEVICE_ITEM_HEIGHT);
+//        make.width.mas_equalTo(DEVICE_ITEM_WIDTH);
+//    }];
+//    UIView *deviceView2 = [UIView new];
+//    [stackView addArrangedSubview:deviceView2];
 }
 
 @end
