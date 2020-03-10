@@ -1,0 +1,70 @@
+/*
+ Localizable.strings
+ VPNFaster
+ 
+ Created by jianbin on 2019/5/11.
+ Copyright © 2019年 roborock. All rights reserved.
+ */
+
+"error_occur" = "خطأ!";
+"ok" = "حسناً";
+"cancel" = "إلغاء";
+"click_to_link" = "اضغط على كونكت";
+"connecting" = "في اتصال…";
+"click_to_disconnect" = "انقر لقطع الاتصال";
+"disconnecting" = "Disconnecting…";
+"menu_change_server" = "اختيار الشبكات الافتراضية الخاصة العقدة";
+"menu_buy_vip" = "الحصول على VIP";
+"menu_vip_expire_time" = "الموعد الأخير";
+"menu_vip_trail_title" = "تجربة VIP";
+"menu_vip_normal_title" = "الحرة التدفق اليومي";
+"menu_vip_expire_m" = "المتبقية";
+"menu_white_list" = "القائمة البيضاء";
+"menu_me" = "لي";
+"menu_share" = "شارك واحصل على VIP مجاني";
+"agreement_title" = "Terms Of Service & Privacy Policy";
+"agreement_detail" = "Thank you for trusting and using the Faster VPN service. In accordance with the latest legal requirements, we have updated the user agreement, privacy policy, and we need to obtain your consumption data when you use the purchase function. User recovery and purchase of VPN Plan will not collect and upload other data. Please read the “Terms Of Service” and “Privacy Policy” carefully, and confirm that we understand the principles of our personal information processing.";
+"agreement_detail1" = "If you agree to the %@ and %@, please click on \"%@\" to use our products and services, we fully protect your personal information in accordance with the law.";
+"terms_of_service" = "<<Terms Of Service>>";
+"privacy_policy" = "<<Privacy Policy>>";
+"agreement_button_cancel" = "رفض";
+"agreement_button_agree" = "توافق";
+"main_vip_title" = "خطط VIP";
+"main_vip_buy_success" = "نجاح الاشتراك";
+"main_vip_buy_success_message" = "يمكنك عرض معلومات الاشتراك في صفحة \"Me \".";
+"main_vip_buy_failed" = "فشل الاشتراك";
+"main_vip_desc_detail" = "Service name: Faster VPN VIP Plans. Subscription time: 1 week, 1 month, 3 months, 6 months, 1 year. (More stable, faster, more unlimited Hotspot Proxies). All in-app purchases are auto-renew subscriptions. Subscription price and unit price: $0.99/Week, $2.99/Month, $7.99/3 Months, $12.99/6 Months, $17.99/Year. Payment will be charged to your iTunes Account upon confirmation of purchase. Your subscriptions automatically renews unless auto-renewal is turned off at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period, at the cost of the chosen package. Subscriptions may be managed by the user’s [Account Settings] after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable. If you want to cancel subscriptions, please go to set in iTunes and App Store, and follow relevant instructions. If you keep using it, you are deemed to accept our %@ and %@.";
+"main_servers_title" = "العقدة";
+"menu_person_username" = "الحساب";
+"menu_person_password" = "كلمة المرور";
+"menu_current_vip_type" = "الخطة الحالية";
+"menu_current_change_pwd" = "إعادة تعيين كلمة المرور";
+"menu_current_message_center" = "مركز الرسائل";
+"menu_current_about_us" = "حول";
+"menu_current_share" = "شارك واحصل على VIP مجاني";
+"menu_current_share_detail" = "ادع أصدقائك للانضمام إلى Faster VPN. عندما يقوم أصدقاؤك بتنزيل Faster VPN من خلال الرابط الذي تشاركه واستخدامه ، ستحصل أنت وأصدقاؤك على نسخة تجريبية من VIP لمدة 3 أيام.";
+"menu_current_share_msg" = "رسالة";
+"menu_current_share_copy" = "نسخة";
+"menu_current_share_more" = "نسخ";
+"share_success" = "تقاسم النجاح";
+"share_fail" = "فشل المشاركة";
+"share_copy_pastboard_success" = "لقد تم نسخها إلى الحافظة";
+"menu_current_switch_account" = "تبديل الحساب";
+"personnal_old_password" = "كلمة المرور القديمة";
+"personnal_please_input_new" = "إدخال كلمة مرور جديدة";
+"login" = "تسجيل الدخول";
+"network_error" = "خطأ في الشبكة ، يرجى التحقق من اتصال الشبكة.";
+"subscribed" = "اكتتبت";
+"network_issue_title" = "خطأ في الشبكة";
+"network_issue_message" = "فشل الاتصال ، يرجى التحقق من اتصال الشبكة والمحاولة مرة أخرى.";
+"quit" = "الإقلاع عن";
+"retry" = "إعادة المحاولة";
+"modify_password_tip" = "يمكن أن تكون كلمة المرور فقط رقمًا صافًا 6 بت";
+"app_name" = "Faster VPN - لا أسرع فقط";
+"app_slogan" = "VPN Speed Master ، أدوات وكيل هوت سبوت أسرع ومجانية وآمنة وغير محدودة!";
+"alert_no_transfer" = "تجاوزت الحركة الحد";
+"alert_vip_server" = "يمكن للمستخدمين من غير الشخصيات الهامة فقط الاتصال بعقد غير الشخصيات المهمة";
+"alert_reset_password_success_title" = "نصائح";
+"alert_reset_password_success_mssage" = "تم تعديل كلمة المرور بنجاح.";
+"alert_switch_account_success_title" = "نصائح";
+"alert_switch_account_success_message" = "نجح تبديل الحساب";

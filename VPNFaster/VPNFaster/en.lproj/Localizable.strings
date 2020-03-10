@@ -1,0 +1,70 @@
+/*
+ Localizable.strings
+ VPNFaster
+ 
+ Created by jianbin on 2019/5/11.
+ Copyright © 2019年 roborock. All rights reserved.
+ */
+
+"error_occur" = "Error!";
+"ok" = "Ok";
+"cancel" = "Cancel";
+"click_to_link" = "Tap To Connect";
+"connecting" = "Connecting…";
+"click_to_disconnect" = "Tap To Disconnect";
+"disconnecting" = "Disconnecting…";
+"menu_change_server" = "Select VPN Node";
+"menu_buy_vip" = "Get VIP";
+"menu_vip_expire_time" = "Deadline";
+"menu_vip_trail_title" = "Trial VIP";
+"menu_vip_normal_title" = "Free Daily Traffic";
+"menu_vip_expire_m" = "Remaining";
+"menu_white_list" = "Whitelist";
+"menu_me" = "Me";
+"menu_share" = "Share And Get Free VIP";
+"agreement_title" = "Terms Of Service & Privacy Policy";
+"agreement_detail" = "Thank you for trusting and using the Faster VPN service. In accordance with the latest legal requirements, we have updated the user agreement, privacy policy, and we need to obtain your consumption data when you use the purchase function. User recovery and purchase of VPN Plan will not collect and upload other data. Please read the “Terms Of Service” and “Privacy Policy” carefully, and confirm that we understand the principles of our personal information processing.";
+"agreement_detail1" = "If you agree to the %@ and %@, please click on \"%@\" to use our products and services, we fully protect your personal information in accordance with the law.";
+"terms_of_service" = "<<Terms Of Service>>";
+"privacy_policy" = "<<Privacy Policy>>";
+"agreement_button_cancel" = "Reject";
+"agreement_button_agree" = "Agree";
+"main_vip_title" = "VIP Plans";
+"main_vip_buy_success" = "Subscription success";
+"main_vip_buy_success_message" = "You can view the subscription information on \"Me\" page.";
+"main_vip_buy_failed" = "Subscription failed";
+"main_vip_desc_detail" = "Service name: Faster VPN VIP Plans. Subscription time: 1 week, 1 month, 3 months, 6 months, 1 year. (More stable, faster, more unlimited Hotspot Proxies). All in-app purchases are auto-renew subscriptions. Subscription price and unit price: $0.99/Week, $2.99/Month, $7.99/3 Months, $12.99/6 Months, $17.99/Year. Payment will be charged to your iTunes Account upon confirmation of purchase. Your subscriptions automatically renews unless auto-renewal is turned off at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period, at the cost of the chosen package. Subscriptions may be managed by the user’s [Account Settings] after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable. If you want to cancel subscriptions, please go to set in iTunes and App Store, and follow relevant instructions. If you keep using it, you are deemed to accept our %@ and %@.";
+"main_servers_title" = "Nodes";
+"menu_person_username" = "Account";
+"menu_person_password" = "Password";
+"menu_current_vip_type" = "Current Plan";
+"menu_current_change_pwd" = "Reset Password";
+"menu_current_message_center" = "Message Center";
+"menu_current_about_us" = "About";
+"menu_current_share" = "Share And Get Free VIP";
+"menu_current_share_detail" = "Invite your friends to join Faster VPN. When your friends download Faster VPN through the link you share and use it, you and your friends will get 3 days of trial VIP.";
+"menu_current_share_msg" = "Message";
+"menu_current_share_copy" = "Copy";
+"menu_current_share_more" = "More";
+"share_success" = "Share succeeded";
+"share_fail" = "Share failed";
+"share_copy_pastboard_success" = "Copied to clipboard";
+"menu_current_switch_account" = "Switch Account";
+"personnal_old_password" = "Old password";
+"personnal_please_input_new" = "Input new password";
+"login" = "Login";
+"network_error" = "Network error, please check your network connection.";
+"subscribed" = "Subscribed";
+"network_issue_title" = "Network Error";
+"network_issue_message" = "Connection failed. Please check your network connection and try again.";
+"quit" = "Quit";
+"retry" = "Retry";
+"modify_password_tip" = "Password can only be 6-bit pure number";
+"app_name" = "Faster VPN - No Fastest Only Faster";
+"app_slogan" = "VPN Speed Master, A Faster &amp; Free &amp; Secure &amp; Unlimited Hotspot Proxy Tools!";
+"alert_no_transfer" = "Traffic has exceeded the limit";
+"alert_vip_server" = "This account can only connect non-VIP nodes";
+"alert_reset_password_success_title" = "Tips";
+"alert_reset_password_success_mssage" = "The password is reseted";
+"alert_switch_account_success_title" = "Tips";
+"alert_switch_account_success_message" = "The account is switched";

@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  VPNFaster
+
+  Created by jianbin on 2019/5/11.
+  Copyright © 2019年 roborock. All rights reserved.
+*/
+
+"error_occur" = "发生错误";
+"ok" = "确定";
+"cancel" = "取消";
+"click_to_link" = "点击连接";
+"connecting" = "正在连接";
+"click_to_disconnect" = "点击断开";
+"disconnecting" = "正在断开";
+"menu_change_server" = "选择VPN节点";
+"menu_buy_vip" = "升级到VIP";
+"menu_vip_expire_time" = "截止时间";
+"menu_vip_trail_title" = "试用VIP";
+"menu_vip_normal_title" = "每日享免费流量";
+"menu_vip_expire_m" = "剩余流量";
+"menu_white_list" = "白名单";
+"menu_me" = "我的";
+"menu_share" = "分享获取免费VIP";
+"agreement_title" = "用户协议&隐私政策";
+"agreement_detail" = "感谢您信任并使用VPN服务，依据最新法律要求，我们更新了用户协议、隐私政策，在您使用购买功能时我们需要获取您的消费数据用于恢复和购买VPN Plan，不会收集和上传其他数据。请仔细阅读%@和%@，并确认了解我们对您的个人信息处理原则。";
+"agreement_detail1" = "如您同意%@和%@，请点击\"%@\"后使用我们的产品和服务，我们依法权利保护您的个人信息。";
+"terms_of_service" = "《服务条款》";
+"privacy_policy" = "《隐私政策》";
+"agreement_button_cancel" = "拒绝";
+"agreement_button_agree" = "同意";
+"main_vip_title" = "VIP套餐";
+"main_vip_buy_success" = "订阅成功";
+"main_vip_buy_success_message" = "您可以在“我的”页面查看订阅信息。";
+"main_vip_buy_failed" = "订阅失败";
+"main_vip_desc_detail" = "服务名称：Faster VPN套餐。\n订阅时长：1周、1个月、3个月、6个月、1年。（更稳定，更快速，更多地区列表）。\n订阅价格和单价：所有应用程序内购买均属于自动续订订阅。1周套餐需要支付¥7（如有提供），1个月套餐需要支付¥25，3个月套餐需要支付¥68，6个月套餐需要支付93¥，1年套餐需要支付¥163。确认购买后，付款既可支付到iTunes账户。订阅套餐用完后系统默认自动续订，若要取消，需在套餐有效期结束前至少24小时关闭自动续订。套餐有效期结束前的24小时内，账户将识别并自动续交费用。订阅由用户管理，用户购买订阅后，可以转到用户账户设置关闭自动续订。订阅被激活期间，当前订阅不可取消。如果用户在免费使用套餐（如有提供）期限内即购买订阅套餐，则未使用的那部分期限将会失效。%@&%@";
+"main_servers_title" = "节点";
+"menu_person_username" = "账号";
+"menu_person_password" = "密码";
+"menu_current_vip_type" = "当前套餐";
+"menu_current_change_pwd" = "修改密码";
+"menu_current_message_center" = "消息中心";
+"menu_current_about_us" = "关于";
+"menu_current_share" = "分享获取免费VIP";
+"menu_current_share_detail" = "邀请您的朋友加入Faster VPN。当您的朋友通过您分享的链接下载Faster VPN并使用它时，您和您的朋友将获得3天免费VIP。";
+"menu_current_share_msg" = "信息";
+"menu_current_share_copy" = "复制";
+"menu_current_share_more" = "更多";
+"share_success" = "分享成功";
+"share_fail" = "分享失败";
+"share_copy_pastboard_success" = "已复制到剪切板";
+"menu_current_switch_account" = "切换账号";
+"personnal_old_password" = "旧密码";
+"personnal_please_input_new" = "输入新密码";
+"login" = "登录";
+"network_error" = "网络错误，请检查您的网络连接。";
+"subscribed" = "已订阅";
+"network_issue_title" = "网络错误";
+"network_issue_message" = "连接失败。请检查网络连接并重试";
+"quit" = "退出";
+"retry" = "重试";
+"modify_password_tip" = "密码只能是6位纯数字";
+"app_name" = "Faster VPN";
+"app_slogan" = "VPN 加速大师，没有最快，只有更快！更安全！免费！不限流量！";
+"alert_no_transfer" = "流量已超过限制";
+"alert_vip_server" = "该账号只能选择非VIP节点";
+"alert_reset_password_success_title" = "提示";
+"alert_reset_password_success_mssage" = "密码修改成功";
+"alert_switch_account_success_title" = "提示";
+"alert_switch_account_success_message" = "账号切换成功";

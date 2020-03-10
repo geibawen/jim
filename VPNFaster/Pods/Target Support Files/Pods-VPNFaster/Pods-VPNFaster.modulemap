@@ -1,0 +1,6 @@
+framework module Pods_VPNFaster {
+  umbrella header "Pods-VPNFaster-umbrella.h"
+
+  export *
+  module * { export * }
+}
