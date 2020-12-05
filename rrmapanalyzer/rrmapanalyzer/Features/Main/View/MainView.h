@@ -22,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<MainViewDelegate> delegate;
 
-@property (nonatomic, strong) UILabel                 *usageInfoLabel;
+@property (nonatomic, strong) UILabel                     *usageInfoLabel;
+@property (nonatomic, strong) UIImageView                 *mapImageView;
 
 @end
 

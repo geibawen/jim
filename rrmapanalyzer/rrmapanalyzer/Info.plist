@@ -54,6 +54,32 @@
 				<string>rrmap</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UTTypeIdentifier</key>
+			<string>com.roborock.rrmapanalyzer.rrmap1</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>gz</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UTTypeIdentifier</key>
+			<string>com.roborock.rrmapanalyzer.rrmap2</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>0</string>
+			</dict>
+		</dict>
 	</array>
 	<key>CFBundleDocumentTypes</key>
 	<array>
@@ -63,6 +89,8 @@
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.roborock.rrmapanalyzer.rrmap</string>
+				<string>com.roborock.rrmapanalyzer.rrmap1</string>
+				<string>com.roborock.rrmapanalyzer.rrmap2</string>
 			</array>
 			<key>LSHandlerRank</key>
 			<string>Default</string>

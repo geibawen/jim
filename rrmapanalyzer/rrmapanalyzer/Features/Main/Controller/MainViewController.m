@@ -107,8 +107,16 @@
     JSValue *value = [func callWithArguments:@[base64MapData]];
     NSDictionary *resultDict = [value toObject];
     
+    NSURL* mapUrl = [NSURL URLWithString:[[resultDict objectForKey:@"map"] objectForKey:@"image"]];
+    NSData * mapImageData = [NSData dataWithContentsOfURL:mapUrl];
+    UIImage * mapImage = [UIImage imageWithData:mapImageData];
+    
     self.mainView.usageInfoLabel.textColor = [UIColor redColor];
+    self.mainView.mapImageView.image = mapImage;
+    
     NSLog(@"done:%@", resultDict);
+    
+    NSLog(@"*******************************");
 }
 
 - (void)gotoChooseVPNServer {
