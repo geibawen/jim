@@ -179,6 +179,7 @@
 		CD952A5323D6AA3700B32153 /* icon_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD952A0523D6AA3700B32153 /* icon_close@2x.png */; };
 		CD952A5723D6D3ED00B32153 /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD952A5623D6D3ED00B32153 /* MapDetailViewController.m */; };
 		CD952A5A23D6DCB500B32153 /* MapDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD952A5923D6DCB500B32153 /* MapDetailView.m */; };
+		CDB7B4C925823183003C4DA1 /* RRSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB7B4C825823183003C4DA1 /* RRSMapView.m */; };
 		CDE3BEA922EEAA4900F52C87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE3BEA822EEAA4900F52C87 /* AppDelegate.m */; };
 		CDE3BEAC22EEAA4900F52C87 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE3BEAB22EEAA4900F52C87 /* ViewController.m */; };
 		CDE3BEAF22EEAA4900F52C87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE3BEAD22EEAA4900F52C87 /* Main.storyboard */; };
@@ -467,6 +468,8 @@
 		CD952A5623D6D3ED00B32153 /* MapDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapDetailViewController.m; sourceTree = "<group>"; };
 		CD952A5823D6DCB500B32153 /* MapDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapDetailView.h; sourceTree = "<group>"; };
 		CD952A5923D6DCB500B32153 /* MapDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapDetailView.m; sourceTree = "<group>"; };
+		CDB7B4C725823183003C4DA1 /* RRSMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRSMapView.h; sourceTree = "<group>"; };
+		CDB7B4C825823183003C4DA1 /* RRSMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RRSMapView.m; sourceTree = "<group>"; };
 		CDE3BEA422EEAA4900F52C87 /* rrmapanalyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rrmapanalyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3BEA722EEAA4900F52C87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CDE3BEA822EEAA4900F52C87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -988,6 +991,7 @@
 		CD9529BC23D6AA3700B32153 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CDB7B4C62581D443003C4DA1 /* RRMapView */,
 				CD9529C423D6AA3700B32153 /* MainView.h */,
 				CD9529BF23D6AA3700B32153 /* MainView.m */,
 				CD952A5823D6DCB500B32153 /* MapDetailView.h */,
@@ -1061,6 +1065,15 @@
 				CD952A0523D6AA3700B32153 /* icon_close@2x.png */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		CDB7B4C62581D443003C4DA1 /* RRMapView */ = {
+			isa = PBXGroup;
+			children = (
+				CDB7B4C725823183003C4DA1 /* RRSMapView.h */,
+				CDB7B4C825823183003C4DA1 /* RRSMapView.m */,
+			);
+			path = RRMapView;
 			sourceTree = "<group>";
 		};
 		CDE3BE9B22EEAA4900F52C87 = {
@@ -1382,6 +1395,7 @@
 				CD95296F23D6AA2F00B32153 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				CD95297423D6AA2F00B32153 /* TYTheme.m in Sources */,
 				CD95298423D6AA2F00B32153 /* RRProgressView.m in Sources */,
+				CDB7B4C925823183003C4DA1 /* RRSMapView.m in Sources */,
 				CD95297F23D6AA2F00B32153 /* MenuItem.m in Sources */,
 				CD95294423D6AA2F00B32153 /* OpenUDID.m in Sources */,
 				CD95294F23D6AA2F00B32153 /* TPLoadingView.m in Sources */,

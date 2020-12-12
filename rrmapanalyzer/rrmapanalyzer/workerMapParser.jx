@@ -1632,43 +1632,10 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     var length = map.width * map.height;
     var rect = {};
     var mapPointNum = 0;
-
-    for (var i = 0; i < length; ++i) {
-      var value = map.data[map.offset + i];
-      if ((value & 0x07) === 0) continue;
-      rect.top = Math.floor(i / map.width);
-      break;
-    }
-
-    if (rect.top === undefined) return;
-
-    for (var _i3 = length; _i3 > rect.top * map.width; --_i3) {
-      var _value = map.data[map.offset + _i3 - 1];
-      if ((_value & 0x07) === 0) continue;
-      rect.height = Math.floor((_i3 - 1) / map.width) - rect.top + 1;
-      break;
-    }
-
-    var top = rect.top * map.width;
-    var bottom = top + rect.height * map.width;
-
-    for (var x = 0; x < map.width && rect.left === undefined; ++x) {
-      for (var _i4 = top + x; _i4 < bottom; _i4 += map.width) {
-        var _value2 = map.data[map.offset + _i4];
-        if ((_value2 & 0x07) === 0) continue;
-        rect.left = x;
-        break;
-      }
-    }
-
-    for (var _x = map.width; _x > rect.left && rect.width === undefined; --_x) {
-      for (var _i5 = top + _x - 1; _i5 < bottom; _i5 += map.width) {
-        var _value3 = map.data[map.offset + _i5];
-        if ((_value3 & 0x07) === 0) continue;
-        rect.width = _x - rect.left;
-        break;
-      }
-    }
+    rect.left = 0;
+    rect.top = 0;
+    rect.height = map.height;
+    rect.width = map.width;
 
     var colorBytes = function colorBytes(color) {
       return color;
@@ -1680,7 +1647,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     };
     var debugList = [];
 
-    for (var _i6 = 0; _i6 < MaxBlockNum; _i6++) {
+    for (var i = 0; i < MaxBlockNum; i++) {
       debugList.push(0);
     }
 
@@ -1705,7 +1672,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         mapIDright = 0;
     var centerInfo = [];
 
-    for (var _i7 = 0; _i7 < MaxBlockNum; _i7++) {
+    for (var _i3 = 0; _i3 < MaxBlockNum; _i3++) {
       var singleItem = {
         x: 0,
         y: 0,
@@ -1769,10 +1736,10 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     var maxIndex = 0,
         maxPointsCount = 0;
 
-    for (var _i8 = 0; _i8 < MaxBlockNum; _i8++) {
-      if (pointsCount[_i8] > maxPointsCount) {
-        maxPointsCount = pointsCount[_i8];
-        maxIndex = _i8;
+    for (var _i4 = 0; _i4 < MaxBlockNum; _i4++) {
+      if (pointsCount[_i4] > maxPointsCount) {
+        maxPointsCount = pointsCount[_i4];
+        maxIndex = _i4;
       }
     }
 
@@ -1782,17 +1749,17 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     var colorUsed = [[], [], [], []];
     colorUsed[0].push([maxIndex]);
 
-    for (var _i9 = 1; _i9 < MaxBlockNum; _i9++) {
-      if (_i9 == maxIndex) continue;
+    for (var _i5 = 1; _i5 < MaxBlockNum; _i5++) {
+      if (_i5 == maxIndex) continue;
 
-      if (neighbourInfo[_i9 * MaxBlockNum + _i9] == 0) {
-        colorData[_i9] = 0;
+      if (neighbourInfo[_i5 * MaxBlockNum + _i5] == 0) {
+        colorData[_i5] = 0;
         continue;
       } else {
         var colorOccupied = [0, 0, 0, 0, 0];
 
         for (var j = 1; j < MaxBlockNum; j++) {
-          if (neighbourInfo[j * MaxBlockNum + _i9] != 0 && colorData[j] != 0) {
+          if (neighbourInfo[j * MaxBlockNum + _i5] != 0 && colorData[j] != 0) {
             colorOccupied[colorData[j]] = 1;
           }
         }
@@ -1800,10 +1767,10 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         for (var _j = 1; _j < colorOccupied.length; _j++) {
           if (colorOccupied[_j] == 0) {
             var colorID = _j;
-            neighbourInfo[_i9 * MaxBlockNum + _i9] = colorID;
-            colorData[_i9] = _j;
+            neighbourInfo[_i5 * MaxBlockNum + _i5] = colorID;
+            colorData[_i5] = _j;
 
-            colorUsed[_j - 1].push(_i9);
+            colorUsed[_j - 1].push(_i5);
 
             break;
           }
@@ -1811,14 +1778,14 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }
     }
 
-    for (var _i10 = 0; _i10 < colorUsed.length; _i10++) {
-      if (colorUsed[_i10].length == 0) {
-        var sourceID = Math.floor((_i10 + 1) / 2) - 1;
+    for (var _i6 = 0; _i6 < colorUsed.length; _i6++) {
+      if (colorUsed[_i6].length == 0) {
+        var sourceID = Math.floor((_i6 + 1) / 2) - 1;
         if (colorUsed[sourceID].length <= 1) continue;
         var totalPushTime = 0;
 
         for (var _j2 = colorUsed[sourceID].length - 1; _j2 >= colorUsed[sourceID].length / 2; _j2--) {
-          colorUsed[_i10].push(colorUsed[sourceID][_j2]);
+          colorUsed[_i6].push(colorUsed[sourceID][_j2]);
 
           totalPushTime++;
         }
@@ -1833,13 +1800,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         maxID = 0,
         zeroID = -1;
 
-    for (var _i11 = 0; _i11 < colorUsed.length; _i11++) {
-      if (colorUsed[_i11].length > maxLength) {
-        maxLength = colorUsed[_i11].length;
-        maxID = _i11;
+    for (var _i7 = 0; _i7 < colorUsed.length; _i7++) {
+      if (colorUsed[_i7].length > maxLength) {
+        maxLength = colorUsed[_i7].length;
+        maxID = _i7;
       }
 
-      if (colorUsed[_i11].length == 0) zeroID = _i11;
+      if (colorUsed[_i7].length == 0) zeroID = _i7;
     }
 
     if (colorUsed[maxID].length >= 2 && zeroID != -1) {
@@ -1849,16 +1816,16 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }
     }
 
-    for (var _i12 = 0; _i12 < colorUsed.length; _i12++) {
-      for (var _j4 = 0; _j4 < colorUsed[_i12].length; _j4++) {
-        var blockIndex = colorUsed[_i12][_j4];
-        colorData[blockIndex] = _i12 + 1;
+    for (var _i8 = 0; _i8 < colorUsed.length; _i8++) {
+      for (var _j4 = 0; _j4 < colorUsed[_i8].length; _j4++) {
+        var blockIndex = colorUsed[_i8][_j4];
+        colorData[blockIndex] = _i8 + 1;
       }
     }
 
-    for (var _i13 = 1; _i13 < colorData.length; _i13++) {
-      if (colorData[_i13] != 0) {
-        var _colorID = colorData[_i13];
+    for (var _i9 = 1; _i9 < colorData.length; _i9++) {
+      if (colorData[_i9] != 0) {
+        var _colorID = colorData[_i9];
         colorList.push(colorBytes(_Palette.colorIndexMap[_colorID]));
         colorHighlightList.push(colorBytes(_Palette.colorHighLightIndexMap[_colorID]));
       } else {
@@ -1908,19 +1875,19 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
           var startIndex = index + _col;
 
-          for (var _i14 = 0; _i14 < 1; ++_i14) {
-            mapListData[mapIDName][startIndex + _i14] = colorHighlight;
-            data[startIndex + _i14] = color;
-            dataBlockMap[startIndex + _i14] = colorBlock;
-            dataBCBackgroundMap[startIndex + _i14] = colorBackground;
+          for (var _i10 = 0; _i10 < 1; ++_i10) {
+            mapListData[mapIDName][startIndex + _i10] = colorHighlight;
+            data[startIndex + _i10] = color;
+            dataBlockMap[startIndex + _i10] = colorBlock;
+            dataBCBackgroundMap[startIndex + _i10] = colorBackground;
           }
         }
       }
     }
 
     rect.mapArea = Math.round(mapPointNum * 25 / 10000);
-    rect.left += map.left - 0.5;
-    rect.top += map.top - 0.5;
+    rect.left += map.left;
+    rect.top += map.top;
 
     for (var iterator in mapListData) {
       mapList[iterator] = "data:image/png;base64," + getIndexPngBase64(rect.width, rect.height, mapListData[iterator]);
@@ -1962,10 +1929,10 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
     if (rect.top === undefined) return;
 
-    for (var _i15 = length; _i15 > rect.top * map.width; --_i15) {
-      var _value4 = map.data[map.offset + _i15 - 1];
-      if ((_value4 & 0x07) === 0) continue;
-      rect.height = Math.floor((_i15 - 1) / map.width) - rect.top + 1;
+    for (var _i11 = length; _i11 > rect.top * map.width; --_i11) {
+      var _value = map.data[map.offset + _i11 - 1];
+      if ((_value & 0x07) === 0) continue;
+      rect.height = Math.floor((_i11 - 1) / map.width) - rect.top + 1;
       break;
     }
 
@@ -1973,19 +1940,19 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     var bottom = top + rect.height * map.width;
 
     for (var x = 0; x < map.width && rect.left === undefined; ++x) {
-      for (var _i16 = top + x; _i16 < bottom; _i16 += map.width) {
-        var _value5 = map.data[map.offset + _i16];
-        if ((_value5 & 0x07) === 0) continue;
+      for (var _i12 = top + x; _i12 < bottom; _i12 += map.width) {
+        var _value2 = map.data[map.offset + _i12];
+        if ((_value2 & 0x07) === 0) continue;
         rect.left = x;
         break;
       }
     }
 
-    for (var _x2 = map.width; _x2 > rect.left && rect.width === undefined; --_x2) {
-      for (var _i17 = top + _x2 - 1; _i17 < bottom; _i17 += map.width) {
-        var _value6 = map.data[map.offset + _i17];
-        if ((_value6 & 0x07) === 0) continue;
-        rect.width = _x2 - rect.left;
+    for (var _x = map.width; _x > rect.left && rect.width === undefined; --_x) {
+      for (var _i13 = top + _x - 1; _i13 < bottom; _i13 += map.width) {
+        var _value3 = map.data[map.offset + _i13];
+        if ((_value3 & 0x07) === 0) continue;
+        rect.width = _x - rect.left;
         break;
       }
     }
