@@ -12,7 +12,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RRSMapView : UIView
 
-- (void)setMapUrl:(NSURL *)url;
+@property (nonatomic, strong) UIImageView                     *mapImageView;
+
+/**
+*  设置地图文件Url
+*
+*  @param url 地图文件Url
+*/
+- (void)setMapFileUrl:(NSURL *)url;
+
+/**
+*  设置路径文件Url
+*
+*  @param url 路径文件Url
+*/
+- (void)setPathFileUrl:(NSURL *)url;
 
 @end
 

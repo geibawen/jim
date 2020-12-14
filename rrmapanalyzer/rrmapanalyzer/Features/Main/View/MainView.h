@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RRSMapView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<MainViewDelegate> delegate;
 
 @property (nonatomic, strong) UILabel                     *usageInfoLabel;
-@property (nonatomic, strong) UIImageView                 *mapImageView;
+@property (nonatomic, strong) RRSMapView                  *mapView;
 
 @end
 

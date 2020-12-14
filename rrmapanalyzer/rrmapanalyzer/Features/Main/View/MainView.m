@@ -21,11 +21,11 @@
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
-    _mapImageView = [TPViewUtil imageViewWithFrame:CGRectMake(0, 0, 0, 0) image:nil];
-    [self addSubview:_mapImageView];
-    [_mapImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _mapView = [[RRSMapView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [self addSubview:_mapView];
+    [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(APP_SCREEN_WIDTH);
-        make.width.mas_equalTo(self).multipliedBy(0.8);
+        make.width.mas_equalTo(self).multipliedBy(1.0);
         make.centerX.mas_equalTo(self);
         make.top.mas_equalTo(self);
     }];
@@ -39,7 +39,7 @@
         make.height.mas_equalTo(100);
         make.width.mas_equalTo(self).multipliedBy(0.8);
         make.centerX.mas_equalTo(self);
-        make.top.mas_equalTo(_mapImageView.mas_bottom).offset(50);
+        make.top.mas_equalTo(_mapView.mas_bottom).offset(50);
     }];
     
     return self;

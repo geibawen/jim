@@ -180,6 +180,7 @@
 		CD952A5723D6D3ED00B32153 /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD952A5623D6D3ED00B32153 /* MapDetailViewController.m */; };
 		CD952A5A23D6DCB500B32153 /* MapDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD952A5923D6DCB500B32153 /* MapDetailView.m */; };
 		CDB7B4C925823183003C4DA1 /* RRSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB7B4C825823183003C4DA1 /* RRSMapView.m */; };
+		CDB7B4CC25876A58003C4DA1 /* RRSMapParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB7B4CB25876A58003C4DA1 /* RRSMapParser.m */; };
 		CDE3BEA922EEAA4900F52C87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE3BEA822EEAA4900F52C87 /* AppDelegate.m */; };
 		CDE3BEAC22EEAA4900F52C87 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE3BEAB22EEAA4900F52C87 /* ViewController.m */; };
 		CDE3BEAF22EEAA4900F52C87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE3BEAD22EEAA4900F52C87 /* Main.storyboard */; };
@@ -470,6 +471,8 @@
 		CD952A5923D6DCB500B32153 /* MapDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapDetailView.m; sourceTree = "<group>"; };
 		CDB7B4C725823183003C4DA1 /* RRSMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRSMapView.h; sourceTree = "<group>"; };
 		CDB7B4C825823183003C4DA1 /* RRSMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RRSMapView.m; sourceTree = "<group>"; };
+		CDB7B4CA25876A58003C4DA1 /* RRSMapParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRSMapParser.h; sourceTree = "<group>"; };
+		CDB7B4CB25876A58003C4DA1 /* RRSMapParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RRSMapParser.m; sourceTree = "<group>"; };
 		CDE3BEA422EEAA4900F52C87 /* rrmapanalyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rrmapanalyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3BEA722EEAA4900F52C87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CDE3BEA822EEAA4900F52C87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1072,6 +1075,8 @@
 			children = (
 				CDB7B4C725823183003C4DA1 /* RRSMapView.h */,
 				CDB7B4C825823183003C4DA1 /* RRSMapView.m */,
+				CDB7B4CA25876A58003C4DA1 /* RRSMapParser.h */,
+				CDB7B4CB25876A58003C4DA1 /* RRSMapParser.m */,
 			);
 			path = RRMapView;
 			sourceTree = "<group>";
@@ -1376,6 +1381,7 @@
 				CD95294A23D6AA2F00B32153 /* NSMutableDictionary+TPCategory.m in Sources */,
 				CD95295823D6AA2F00B32153 /* TPCellView.m in Sources */,
 				CD95296123D6AA2F00B32153 /* UIColor+TPCategory.m in Sources */,
+				CDB7B4CC25876A58003C4DA1 /* RRSMapParser.m in Sources */,
 				CD95294E23D6AA2F00B32153 /* TPDate.m in Sources */,
 				CD95295F23D6AA2F00B32153 /* TPViewUtil.m in Sources */,
 				CD95294623D6AA2F00B32153 /* NSObject+TPCategory.m in Sources */,

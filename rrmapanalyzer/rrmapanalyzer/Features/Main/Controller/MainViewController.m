@@ -99,6 +99,9 @@
     if (!url) {
         return;
     }
+    [self.mainView.mapView setMapFileUrl:url];
+    return;
+    
     NSData *mapData = [NSData dataWithContentsOfURL:url];
     NSData *unGzedMapData = [mapData gzipInflate];
     NSString *base64MapData = [unGzedMapData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
@@ -112,7 +115,7 @@
     UIImage * mapImage = [UIImage imageWithData:mapImageData];
     
     self.mainView.usageInfoLabel.textColor = [UIColor redColor];
-    self.mainView.mapImageView.image = mapImage;
+    self.mainView.mapView.mapImageView.image = mapImage;
     
     NSLog(@"done:%@", resultDict);
     

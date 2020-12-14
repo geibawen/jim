@@ -10,19 +10,21 @@
 #define MAX_SCAL 5
 
 #import "RRSMapView.h"
+#import "RRSMapParser.h"
 
 @interface RRSMapView() <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) UIImageView                     *mapImageView;
 
 @end
 
 @implementation RRSMapView
 
+CGSize _selfSize;
+
 CGPoint _from;
-int _lastTouchs = 0;
+NSInteger _lastTouchs = 0;
 CGFloat _rotation = 0;
-CGFloat _scale = 0;
+CGFloat _scale = 1;
 CGPoint _translation;
 
 
@@ -34,10 +36,10 @@ CGPoint _translation;
     
     [self addSubview:self.mapImageView];
 
-    // 双指点击
+    // 点击
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureRecognizer:)];
-    tapGesture.numberOfTapsRequired = 1;
-    tapGesture.numberOfTouchesRequired = 2;
+    tapGesture.numberOfTapsRequired = 2;
+    tapGesture.numberOfTouchesRequired = 1;
     tapGesture.delegate = self;
     [self addGestureRecognizer:tapGesture];
     
@@ -64,15 +66,24 @@ CGPoint _translation;
     rotationGesture.delegate = self;
     [self addGestureRecognizer:rotationGesture];
     
+    _selfSize = CGSizeMake(self.bounds.size.width, self.bounds.size.height);
+    
     return self;
 }
 
 - (UIImageView *)mapImageView {
     if (!_mapImageView) {
-        _mapImageView = [TPViewUtil imageViewWithFrame:CGRectMake(0, 0, 100, 100) image:nil];
-        _mapImageView.backgroundColor = [UIColor grayColor];
+        _mapImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     }
     return _mapImageView;
+}
+
+- (void)layoutSubviews {
+    if (self.bounds.size.height != _selfSize.height && self.bounds.size.width != _selfSize.width) {
+        _selfSize.height = self.bounds.size.height;
+        _selfSize.width = self.bounds.size.width;
+        [self scaleToFit:NO];
+    }
 }
 
 #pragma mark - Internal Function
@@ -85,7 +96,7 @@ CGPoint _translation;
         CGFloat scale = MIN(scaleX, scaleY);
         _scale = scale;
         if (animated) {
-            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 [self resetTransform];
             } completion:nil];
         }else {
@@ -118,107 +129,101 @@ CGPoint _translation;
 }
 
 - (void)rotateAt:(CGPoint)center rotation:(CGFloat)rotation {
+    _rotation = _rotation + rotation;
+    CGFloat x1 = self.mapImageView.center.x;
+    CGFloat y1 = self.mapImageView.center.y;
+    CGFloat x0 = center.x;
+    CGFloat y0 = self.bounds.size.height - center.y;
+    CGFloat x = (x1 - x0) * cos(rotation) - (y1 - y0) * sin(rotation) + x0;
+    CGFloat y = (y1 - y0) * cos(rotation) + (x1 - x0) * sin(rotation) + y0;
     
+    self.mapImageView.center = CGPointMake(x, y);
+    self.mapImageView.transform = CGAffineTransformScale(CGAffineTransformRotate(CGAffineTransformIdentity, _rotation), _scale, _scale);
 }
 
 - (void)translate:(CGFloat)x y:(CGFloat)y {
-    
+    _translation = CGPointMake(_translation.x + x, _translation.y + y);
+    self.mapImageView.center = CGPointMake(self.mapImageView.center.x + x, self.mapImageView.center.y + y);
 }
 
 - (void)gestureRecognizer:(UIGestureRecognizer *)gesture {
-    
-}
-
-private func rotateAt(center: CGPoint, rotation: CGFloat) {
-    self.gestureParams.rotation = self.gestureParams.rotation + rotation;
-    // x = (x1 - x0)cosθ - (y1 - y0)sinθ + x0
-    // y = (y1 - y0)cosθ + (x1 - x0)sinθ + y0
-    let x1 = self.canvasView!.center.x;
-    let y1 = self.canvasView!.center.y;
-    let x0 = center.x;
-    let y0 = self.bounds.size.height - center.y;
-    let x = (x1 - x0) * cos(rotation) - (y1 - y0) * sin(rotation) + x0
-    let y = (y1 - y0) * cos(rotation) + (x1 - x0) * sin(rotation) + y0;
-    
-    self.canvasView!.center = CGPoint(x: x, y: y);
-    self.canvasView!.transform =  CGAffineTransform.identity.rotated(by: self.gestureParams.rotation).scaledBy(x: self.gestureParams.scale, y: self.gestureParams.scale);
-}
-
-private func translate(x: CGFloat, y: CGFloat) {
-    self.gestureParams.translation = CGPoint(x: self.gestureParams.translation.x + x, y: self.gestureParams.translation.y + y);
-    self.canvasView!.center = CGPoint(x: self.canvasView!.center.x + x, y: self.canvasView!.center.y + y);
-}
-
-@objc func gestureRecognizer(gesture: UIGestureRecognizer) {
-    if self.canvasView != nil {
-        switch gesture {
-        case is UIPinchGestureRecognizer:
-            let pinchGesture = gesture as! UIPinchGestureRecognizer;
-            if pinchGesture.state == .began || pinchGesture.state == .changed {
+    if (self.mapImageView) {
+        if ([gesture isKindOfClass:[UIPinchGestureRecognizer class]]) {
+            UIPinchGestureRecognizer *pinchGesture = (UIPinchGestureRecognizer *)gesture;
+            if (pinchGesture.state == UIGestureRecognizerStateBegan || pinchGesture.state == UIGestureRecognizerStateChanged) {
                 // 计算缩放的中心点和缩放比例，每次缩放的比例需要累计
-                var center = pinchGesture.location(in: self);
-                if pinchGesture.numberOfTouches == 2 {
-                    let center0 = pinchGesture.location(ofTouch: 0, in: self);
-                    let center1 = pinchGesture.location(ofTouch: 1, in: self);
-                    center = CGPoint(x: (center0.x + center1.x)/2, y: (center0.y + center1.y)/2);
+                CGPoint center = [pinchGesture locationInView:self];
+                if (pinchGesture.numberOfTouches == 2) {
+                    CGPoint center0 = [pinchGesture locationOfTouch:0 inView:self];
+                    CGPoint center1 = [pinchGesture locationOfTouch:1 inView:self];
+                    center = CGPointMake((center0.x + center1.x)/2, (center0.y + center1.y)/2);
                 }
-                self.scaleAt(center: center, scale: pinchGesture.scale);
+                [self scaleAt:center scale:pinchGesture.scale];
                 pinchGesture.scale = 1;
-                self.delegate?.canvasContentView(self, scale: self.gestureParams.scale);
             }
-            break;
-        case is UIPanGestureRecognizer:
-            let panGesture = gesture as! UIPanGestureRecognizer;
-            let location = panGesture.location(in: self);
-            if  panGesture.state == .began {
+        } else if ([gesture isKindOfClass:[UIPanGestureRecognizer class]]) {
+            UIPinchGestureRecognizer *panGesture = (UIPinchGestureRecognizer *)gesture;
+            CGPoint location = [panGesture locationInView:self];
+            if (panGesture.state == UIGestureRecognizerStateBegan) {
                 // 记录开始位置
-                self.gestureParams.from = location;
-                self.gestureParams.lastTouchs = gesture.numberOfTouches;
-            }else if panGesture.state == .changed {
-                if self.gestureParams.lastTouchs != panGesture.numberOfTouches {
-                    self.gestureParams.from = location;
+                _from = location;
+                _lastTouchs = gesture.numberOfTouches;
+            } else if (panGesture.state == UIGestureRecognizerStateChanged) {
+                if (_lastTouchs != panGesture.numberOfTouches) {
+                    _from = location;
                 }
                 // 计算偏移量
-                self.gestureParams.lastTouchs = panGesture.numberOfTouches;
-                let x = location.x - self.gestureParams.from.x;
-                let y = location.y - self.gestureParams.from.y;
-                self.gestureParams.from = location;
-                self.translate(x: x, y: y);
-                self.delegate?.canvasContentView(self, x: x, y: y);
+                _lastTouchs = panGesture.numberOfTouches;
+                CGFloat x = location.x - _from.x;
+                CGFloat y = location.y - _from.y;
+                _from = location;
+                [self translate:x y:y];
             }
-            break;
-        case is UIRotationGestureRecognizer:
-            let rotatioGesture = gesture as! UIRotationGestureRecognizer;
-            if rotatioGesture.state == .began || rotatioGesture.state == .changed {
+        } else if ([gesture isKindOfClass:[UIRotationGestureRecognizer class]]) {
+            UIRotationGestureRecognizer *rotatioGesture = (UIRotationGestureRecognizer *)gesture;
+            if (rotatioGesture.state == UIGestureRecognizerStateBegan || rotatioGesture.state == UIGestureRecognizerStateChanged) {
                 // 计算旋转的中心点和旋转角度，每次旋转的角度需要累计
-                var center = rotatioGesture.location(in: self);
-                if rotatioGesture.numberOfTouches == 2 {
-                    let center0 = rotatioGesture.location(ofTouch: 0, in: self);
-                    let center1 = rotatioGesture.location(ofTouch: 1, in: self);
-                    center = CGPoint(x: (center0.x + center1.x)/2, y: (center0.y + center1.y)/2);
+                CGPoint center = [rotatioGesture locationInView:self];
+                if (rotatioGesture.numberOfTouches == 2) {
+                    CGPoint center0 = [rotatioGesture locationOfTouch:0 inView:self];
+                    CGPoint center1 = [rotatioGesture locationOfTouch:1 inView:self];
+                    center = CGPointMake((center0.x + center1.x)/2, (center0.y + center1.y)/2);
                 }
-                self.rotateAt(center: center, rotation: rotatioGesture.rotation);
+                [self rotateAt:center rotation:rotatioGesture.rotation];
                 rotatioGesture.rotation = 0;
-                self.delegate?.canvasContentView(self, rotation: self.gestureParams.rotation);
             }
-            break;
-        case is UITapGestureRecognizer:
-            let tapGesture = gesture as! UITapGestureRecognizer;
-            if tapGesture.numberOfTouches == 2 {
-                self.delegate?.canvasContentView(self, tapTouches: 2);
-            }else if tapGesture.numberOfTouches == 3 {
-                self.delegate?.canvasContentView(self, tapTouches: 3);
+        } else if ([gesture isKindOfClass:[UITapGestureRecognizer class]]) {
+            UITapGestureRecognizer *tapGesture = (UITapGestureRecognizer *)gesture;
+            if (tapGesture.numberOfTouches == 1) {
+                //处理单击
+                [self scaleToFit:YES];
+            } else if (tapGesture.numberOfTouches == 3) {
+                //处理单击
             }
-            break;
-        default:
-            break;
         }
     }
 }
 
 #pragma mark - API
 
-- (void)setMapUrl:(NSURL *)url {
+- (void)setMapFileUrl:(NSURL *)url {
+    [[RRSMapParser sharedInstance] parse:url result:^(NSDictionary *resultDict) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSURL* mapUrl = [NSURL URLWithString:[[resultDict objectForKey:@"map"] objectForKey:@"image"]];
+            NSData * mapImageData = [NSData dataWithContentsOfURL:mapUrl];
+            UIImage * mapImage = [UIImage imageWithData:mapImageData];
+            
+            NSNumber* width = [[resultDict objectForKey:@"map"] objectForKey:@"width"];
+            NSNumber* height = [[resultDict objectForKey:@"map"] objectForKey:@"height"];
+            
+            self.mapImageView.image = mapImage;
+            self.mapImageView.width = [width floatValue];
+            self.mapImageView.height = [height floatValue];
+        });
+    }];
+}
+
+- (void)setPathFileUrl:(NSURL *)url {
     
 }
 
