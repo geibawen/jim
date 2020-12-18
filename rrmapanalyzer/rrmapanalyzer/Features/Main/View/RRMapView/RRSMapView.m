@@ -7,7 +7,7 @@
 //
 
 #define MIN_SCAL 1
-#define MAX_SCAL 5
+#define MAX_SCAL 10
 
 #import "RRSMapView.h"
 #import "RRSMapParser.h"
@@ -95,6 +95,7 @@ CGPoint _translation;
         CGFloat scaleY = self.bounds.size.height / view.bounds.size.height;
         CGFloat scale = MIN(scaleX, scaleY);
         _scale = scale;
+        _rotation = 0;
         if (animated) {
             [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 [self resetTransform];
